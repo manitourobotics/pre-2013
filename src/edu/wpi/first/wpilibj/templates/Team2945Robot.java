@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -44,10 +45,18 @@ public class Team2945Robot extends SimpleRobot {
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
+	try {
+		FileWriter fStream = new FileWriter("foo.txt");
+	} catch (Exception e) {
+		System.err.println("Error: " + e.getMessage());
+	}
         while(true) {
             getWatchdog().feed();
 
             drive.tankDrive(madcatz.getRawAxis(2), madcatz.getRawAxis(5));
+	    System.out.print(madcatz.getRawAxis(5) + "\n");
+	    SmartDashboard.putNumber("Madcatz right", madcatz.getRawAxis(5));
+	    SmartDashboard.putNumber("Madcatz left", madcatz.getRawAxis(2));
         }
 
     }
