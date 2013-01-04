@@ -45,11 +45,6 @@ public class Team2945Robot extends SimpleRobot {
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
-	try {
-		FileWriter fStream = new FileWriter("foo.txt");
-	} catch (Exception e) {
-		System.err.println("Error: " + e.getMessage());
-	}
         while(true) {
             getWatchdog().feed();
 
